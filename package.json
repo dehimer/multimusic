@@ -1,7 +1,7 @@
 {
-  "name": "agar",
+  "name": "multimusic",
   "version": "1.0.0",
-  "description": "Agar like",
+  "description": "MultiPlayer Music game",
   "main": "server.js",
   "scripts": {
     "dev": "node bin/dev.js",
