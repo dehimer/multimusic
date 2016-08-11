@@ -2,15 +2,23 @@ MultiMusic
 
 MultiPlayer game where you create music together
 
+
 INSTALL
+
 1. cd your/path/to/multimusic
+
 2. npm istall
 
+
 BUILD
+
 1. npm run build
 
+
 RUN
+
 1. cd server
+
 2. node server.js
 
 
