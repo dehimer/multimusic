@@ -41,8 +41,9 @@ let content = $(`
     <div class='content'>
         <div class='column'>
             <div class='column__content'>
+                <div class='melodies__list-name melodies__list-name-left'></div>
                 <div class='melodies__list-wrapper-wrapper'>
-                    <div style='height: 100%;position: absolute;widht:1px;background-color: white;'></div>
+                    <div class='melodies__list-scrollline'></div>
                     <div class='melodies__list-wrapper'>
                         <div class='melodies__list melodies__list-left'></div>
                     </div>
@@ -56,7 +57,9 @@ let content = $(`
         </div>
         <div class='column'>
             <div class='column__content'>
+                <div class='melodies__list-name melodies__list-name-right'></div>
                 <div class='melodies__list-wrapper-wrapper'>
+                    <div class='melodies__list-scrollline'></div>
                     <div class='melodies__list-wrapper'>
                         <div class='melodies__list melodies__list-right'></div>
                     </div>
@@ -80,6 +83,10 @@ const lists = {
         left: root_el.find('.melodies__list-left'),
         right: root_el.find('.melodies__list-right')
     },
+    name_els: {
+        left: root_el.find('.melodies__list-name-left'),
+        right: root_el.find('.melodies__list-name-right')
+    },
     scrolls: {
         create: function(){
             console.log(this);
@@ -99,8 +106,8 @@ const lists = {
         }
     },
     update: function(sideName, row){
-        console.log(this);
-        console.log(sideName);
+        console.log(row.name+':'+!!this.name_els);
+        this.name_els[sideName].html(row.name);
         this.els[sideName].html(this.generate(row));
         this.scrolls[sideName].refresh();
     },
@@ -116,7 +123,7 @@ const lists = {
 
             return (`
                     <div class='melodies__list-item ${classNames}' data-id='${melody.id}' data-rowid='${row.id}'>
-                        ${melody.name}
+                        <span>${melody.name}</span>
                     </div>
                 `)}
         ).join('');
@@ -195,8 +202,11 @@ $.get('/serverip', (serverip) => {
 
 
         root_el.find('.melodies__list-item').on('tap', (e) => {
+
             const rowid = e.target.dataset.rowid;
             const id = e.target.dataset.id;
+            console.log(rowid);
+            console.log(id);
             if(id === state.melodies[rowid].melodyid){
                 socket.emit('melody_selected', rowid, '00');
             }else{

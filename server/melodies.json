@@ -1,6 +1,7 @@
 [
     {
         "id": "01",
+        "name": "Басс",
         "melodyid": null,
         "list": [
             {"id":"01", "name": "Melody Number #101"},
@@ -27,6 +28,7 @@
     },
     {
         "id": "02",
+        "name": "Мелодия",
         "melodyid": null,
         "list": [
             {"id":"01", "name": "Melody Number #201"},
