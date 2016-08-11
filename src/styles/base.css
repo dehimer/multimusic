@@ -12,6 +12,20 @@
     src: url(/fonts/BenderBlack/BenderBlack.woff);
 }
 
+@font-face {
+    font-family: BenderLight;
+    src: url(/fonts/BenderLight/BenderLight.eot);
+    src: url(/fonts/BenderLight/BenderLight.ttf);
+    src: url(/fonts/BenderLight/BenderLight.woff);
+}
+
+@font-face {
+    font-family: BenderRegular;
+    src: url(/fonts/BenderRegular/BenderRegular.eot);
+    src: url(/fonts/BenderRegular/BenderRegular.ttf);
+    src: url(/fonts/BenderRegular/BenderRegular.woff);
+}
+
 * {
     box-sizing: border-box;
     user-select: none;

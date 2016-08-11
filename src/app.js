@@ -8,10 +8,41 @@ import './styles/app.css';
 
 let root_el = $('#root');
 let content = $(`
+    <div class='header'>
+    
+        <div class='header__column'>
+            <div class='logo'>
+                <img src='logo.jpg'/>
+            </div>
+        </div>
+        <div class='header__column'>
+            <div class='progress-bar'>
+                <div class='progress-bar__content'>
+                    <div style='width:100%;'>Положение в такте</div>
+                    <div class='progress-bar__line-wrapper'>
+                        <div class='progress-bar__line'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='header__column'>
+            <div class='tacts-bar'>
+                <div class='tacts-bar__content'>
+                    <div style='width:100%;'>Тактов сыграно</div>
+                    <div class='tacts-bar__line-wrapper'>
+                        <div class='tacts-bar__line tacts-bar__line_active'></div>
+                        <div class='tacts-bar__line'></div>
+                        <div class='tacts-bar__line'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class='content'>
         <div class='column'>
             <div class='column__content'>
                 <div class='melodies__list-wrapper-wrapper'>
+                    <div style='height: 100%;position: absolute;widht:1px;background-color: white;'></div>
                     <div class='melodies__list-wrapper'>
                         <div class='melodies__list melodies__list-left'></div>
                     </div>
@@ -21,11 +52,6 @@ let content = $(`
                         <div class='live__button-text'>LIVE</div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class='logo column' style='min-width:160px;'>
-            <div class='column__content'>
-                <img class='logo' src='logo.jpg'/>
             </div>
         </div>
         <div class='column'>
@@ -39,27 +65,6 @@ let content = $(`
                     <div class='live__button live__button-right'>
                         <div class='live__button-text'>LIVE</div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class='toolbar'>
-        <div class='progress-bar'>
-            <div class='progress-bar__content'>
-                <div style='width:100%;'>Положение в такте</div>
-                <div class='progress-bar__line-wrapper'>
-                    <div class='progress-bar__line'></div>
-                </div>
-            </div>
-        </div>
-
-        <div class='tacts-bar'>
-            <div class='tacts-bar__content'>
-                <div style='width:100%;'>Тактов сыграно</div>
-                <div class='tacts-bar__line-wrapper'>
-                    <div class='tacts-bar__line tacts-bar__line_active'></div>
-                    <div class='tacts-bar__line'></div>
-                    <div class='tacts-bar__line'></div>
                 </div>
             </div>
         </div>
