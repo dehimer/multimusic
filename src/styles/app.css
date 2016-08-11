@@ -1,0 +1,179 @@
+.content {
+    height:85%;
+    width:100vw;
+    display: flex;
+    justify-content: center;
+}
+
+.toolbar {
+
+    border-top: 1px solid grey;
+
+    height: 25%;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+.column {
+    display: flex;
+    /*border: 1px solid red;*/
+    height: 100%;
+    min-width: 200px;
+}
+
+.column__content {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding:20px;
+    height:100%;
+}
+/* hack of problem of iscroll when overflow-x:visible;overflow-y:hidden; in same time*/
+.melodies__list-wrapper-wrapper {
+
+    padding:0px;
+    padding-right:5px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    max-height: 80%;
+}
+.melodies__list-wrapper {
+    font-size: 10px;
+    font-weight: bold;
+    margin: 0px auto;
+    width: 100%;
+    border: 1px solid grey;
+    height: 100%;
+    overflow:visible;
+    /*height:200px;*/
+
+    position:relative;
+}
+
+.melodies__list {
+}
+
+.melodies__list-item {
+
+    padding: 10px;
+
+    /*background-color: rgba(0,0,0,0.1);*/
+}
+
+.melodies__list-item_active {
+    color: white;
+}
+
+.live-button__wrapper {
+    padding-right:5px;
+}
+.live__button {
+    margin: 0px auto;
+    padding: 10px 15px;
+    width: 100%;
+    background: #b68540;
+    display: flex;
+}
+
+.live__button_active {
+    margin: 0px auto;
+    padding: 10px 15px;
+    width: 100%;
+    background: #b68540;
+    display: flex;
+}
+
+.live__button-text {
+    color: white;
+    margin: auto;
+    font-size:9px;
+}
+
+.progress-bar {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 100%;
+    color:white;
+    font-size: 11px;
+}
+
+.progress-bar__content {
+    margin:auto;
+    width: 150px;
+    padding-bottom:5px;
+}
+
+.progress-bar__line-wrapper {
+    margin-top: 8px;
+    background-color: grey;
+    width: 100%;
+    height: 5px;
+    transition-property: all;
+    transition-duration: 0.5s;
+}
+.progress-bar__line {
+    background-color: #b68540;
+    width: 60%;
+    height: 100%;
+    border-radius: 2px;
+    transition-property: all;
+    transition-duration: 0.5s;
+}
+
+.tacts-bar {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 100%;
+    color:white;
+    font-size: 11px;
+}
+
+.tacts-bar__content {
+    margin:auto;
+    width: 150px;
+    padding-bottom:5px;
+}
+
+.tacts-bar__line-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+
+    width: 100%;
+    height: 5px;
+}
+.tacts-bar__line {
+
+    background-color: grey;
+
+    width: 32%;
+    height: 100%;
+    transition-property: all;
+    transition-duration: 0.5s;
+}
+.tacts-bar__line_active {
+    background-color: #b68540;
+}
+
+
+.logo {
+    margin: auto;
+    max-width:100%;
+}
+
+.iScrollIndicator {
+    height:25px;
+    width:3px !important;
+    border-radius: 0px !important;
+}
+
+.iScrollVerticalScrollbar {
+    overflow: visible !important;
+    right:-6px !important;
+}

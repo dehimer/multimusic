@@ -1,0 +1,35 @@
+@font-face {
+    font-family: BenderBold;
+    src: url(/fonts/BenderBold/BenderBold.eot);
+    src: url(/fonts/BenderBold/BenderBold.ttf);
+    src: url(/fonts/BenderBold/BenderBold.woff);
+}
+
+@font-face {
+    font-family: BenderBlack;
+    src: url(/fonts/BenderBlack/BenderBlack.eot);
+    src: url(/fonts/BenderBlack/BenderBlack.ttf);
+    src: url(/fonts/BenderBlack/BenderBlack.woff);
+}
+
+* {
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+#root {
+    font-family: BenderBlack, Geneva, Arial, Helvetica, sans-serif;
+	display:flex;
+	flex-direction: column;
+	width: 100vw;
+	height: 100vh;
+	background-color: black;
+
+    color: #b68540;
+}
