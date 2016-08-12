@@ -1,0 +1,1002 @@
+[
+  {
+    "ID": 1,
+    "Clip Name": "melody1",
+    "Creature": "melody",
+    "Instrument ID": 1,
+    "Instrument name": "Мелодия",
+    "Player assignment (3p)": 1,
+    "Beats": 64,
+    "Codename": "Кометный дождь"
+  },
+  {
+    "ID": 2,
+    "Clip Name": "melody2",
+    "Creature": "melody",
+    "Instrument ID": 1,
+    "Instrument name": "Мелодия",
+    "Player assignment (3p)": 1,
+    "Beats": 64,
+    "Codename": "Пруд"
+  },
+  {
+    "ID": 3,
+    "Clip Name": "melody3",
+    "Creature": "melody",
+    "Instrument ID": 1,
+    "Instrument name": "Мелодия",
+    "Player assignment (3p)": 1,
+    "Beats": 64,
+    "Codename": "Школьная мечта"
+  },
+  {
+    "ID": 4,
+    "Clip Name": "melody4",
+    "Creature": "melody",
+    "Instrument ID": 1,
+    "Instrument name": "Мелодия",
+    "Player assignment (3p)": 1,
+    "Beats": 32,
+    "Codename": "Гармошка"
+  },
+  {
+    "ID": 5,
+    "Clip Name": "melody5",
+    "Creature": "melody",
+    "Instrument ID": 1,
+    "Instrument name": "Мелодия",
+    "Player assignment (3p)": 1,
+    "Beats": 64,
+    "Codename": "Гармонь в цехе"
+  },
+  {
+    "ID": 6,
+    "Clip Name": "melody6",
+    "Creature": "melody",
+    "Instrument ID": 1,
+    "Instrument name": "Мелодия",
+    "Player assignment (3p)": 1,
+    "Beats": 64,
+    "Codename": "Робкий червяк"
+  },
+  {
+    "ID": 7,
+    "Clip Name": "melody7",
+    "Creature": "melody",
+    "Instrument ID": 1,
+    "Instrument name": "Мелодия",
+    "Player assignment (3p)": 1,
+    "Beats": 32,
+    "Codename": "Балерина"
+  },
+  {
+    "ID": 8,
+    "Clip Name": "pad1",
+    "Creature": "pad",
+    "Instrument ID": 2,
+    "Instrument name": "",
+    "Player assignment (3p)": 1,
+    "Beats": 32,
+    "Codename": "Космические ветра"
+  },
+  {
+    "ID": 9,
+    "Clip Name": "pad2",
+    "Creature": "pad",
+    "Instrument ID": 2,
+    "Instrument name": "",
+    "Player assignment (3p)": 1,
+    "Beats": 32,
+    "Codename": "Космические вихри"
+  },
+  {
+    "ID": 10,
+    "Clip Name": "pad3",
+    "Creature": "pad",
+    "Instrument ID": 2,
+    "Instrument name": "",
+    "Player assignment (3p)": 1,
+    "Beats": 32,
+    "Codename": "Пучина"
+  },
+  {
+    "ID": 11,
+    "Clip Name": "pad4",
+    "Creature": "pad",
+    "Instrument ID": 2,
+    "Instrument name": "",
+    "Player assignment (3p)": 1,
+    "Beats": 32,
+    "Codename": "Аврора"
+  },
+  {
+    "ID": 12,
+    "Clip Name": "pad5",
+    "Creature": "pad",
+    "Instrument ID": 2,
+    "Instrument name": "",
+    "Player assignment (3p)": 1,
+    "Beats": 32,
+    "Codename": "Каналы связи"
+  },
+  {
+    "ID": 13,
+    "Clip Name": "pad6",
+    "Creature": "pad",
+    "Instrument ID": 2,
+    "Instrument name": "",
+    "Player assignment (3p)": 1,
+    "Beats": 32,
+    "Codename": "Стружка"
+  },
+  {
+    "ID": 14,
+    "Clip Name": "pad7",
+    "Creature": "pad",
+    "Instrument ID": 2,
+    "Instrument name": "",
+    "Player assignment (3p)": 1,
+    "Beats": 32,
+    "Codename": "Печаль пиноккио"
+  },
+  {
+    "ID": 15,
+    "Clip Name": "pad8",
+    "Creature": "pad",
+    "Instrument ID": 2,
+    "Instrument name": "",
+    "Player assignment (3p)": 1,
+    "Beats": 32,
+    "Codename": "Комары в цифре"
+  },
+  {
+    "ID": 16,
+    "Clip Name": "pad9",
+    "Creature": "pad",
+    "Instrument ID": 2,
+    "Instrument name": "",
+    "Player assignment (3p)": 1,
+    "Beats": 32,
+    "Codename": "Азиатская флейта"
+  },
+  {
+    "ID": 17,
+    "Clip Name": "pad10",
+    "Creature": "pad",
+    "Instrument ID": 2,
+    "Instrument name": "",
+    "Player assignment (3p)": 1,
+    "Beats": 32,
+    "Codename": "Остывший салат"
+  },
+  {
+    "ID": 18,
+    "Clip Name": "pad11",
+    "Creature": "pad",
+    "Instrument ID": 2,
+    "Instrument name": "",
+    "Player assignment (3p)": 1,
+    "Beats": 32,
+    "Codename": "Лилии в пруду"
+  },
+  {
+    "ID": 19,
+    "Clip Name": "pad12",
+    "Creature": "pad",
+    "Instrument ID": 2,
+    "Instrument name": "",
+    "Player assignment (3p)": 1,
+    "Beats": 32,
+    "Codename": "Медитация"
+  },
+  {
+    "ID": 20,
+    "Clip Name": "pad13",
+    "Creature": "pad",
+    "Instrument ID": 2,
+    "Instrument name": "",
+    "Player assignment (3p)": 1,
+    "Beats": 32,
+    "Codename": "Мокрый асфальт"
+  },
+  {
+    "ID": 21,
+    "Clip Name": "pad14",
+    "Creature": "pad",
+    "Instrument ID": 2,
+    "Instrument name": "",
+    "Player assignment (3p)": 1,
+    "Beats": 32,
+    "Codename": "Левитация"
+  },
+  {
+    "ID": 22,
+    "Clip Name": "pad15",
+    "Creature": "pad",
+    "Instrument ID": 2,
+    "Instrument name": "",
+    "Player assignment (3p)": 1,
+    "Beats": 32,
+    "Codename": "Левитация 2"
+  },
+  {
+    "ID": 23,
+    "Clip Name": "bass1",
+    "Creature": "bass",
+    "Instrument ID": 3,
+    "Instrument name": "Бас",
+    "Player assignment (3p)": 2,
+    "Beats": 64,
+    "Codename": "Смелость"
+  },
+  {
+    "ID": 24,
+    "Clip Name": "bass2",
+    "Creature": "bass",
+    "Instrument ID": 3,
+    "Instrument name": "Бас",
+    "Player assignment (3p)": 2,
+    "Beats": 64,
+    "Codename": "Проба"
+  },
+  {
+    "ID": 25,
+    "Clip Name": "bass3",
+    "Creature": "bass",
+    "Instrument ID": 3,
+    "Instrument name": "Бас",
+    "Player assignment (3p)": 2,
+    "Beats": 64,
+    "Codename": "Прыгающий дровосек"
+  },
+  {
+    "ID": 26,
+    "Clip Name": "bass4",
+    "Creature": "bass",
+    "Instrument ID": 3,
+    "Instrument name": "Бас",
+    "Player assignment (3p)": 2,
+    "Beats": 64,
+    "Codename": "Шагающий дровосек"
+  },
+  {
+    "ID": 27,
+    "Clip Name": "bass5",
+    "Creature": "bass",
+    "Instrument ID": 3,
+    "Instrument name": "Бас",
+    "Player assignment (3p)": 2,
+    "Beats": 64,
+    "Codename": "Перебор пилы"
+  },
+  {
+    "ID": 28,
+    "Clip Name": "bass6",
+    "Creature": "bass",
+    "Instrument ID": 3,
+    "Instrument name": "Бас",
+    "Player assignment (3p)": 2,
+    "Beats": 64,
+    "Codename": "Индийский танцор"
+  },
+  {
+    "ID": 29,
+    "Clip Name": "bass7",
+    "Creature": "bass",
+    "Instrument ID": 3,
+    "Instrument name": "Бас",
+    "Player assignment (3p)": 2,
+    "Beats": 64,
+    "Codename": "Бородач"
+  },
+  {
+    "ID": 30,
+    "Clip Name": "bass8",
+    "Creature": "bass",
+    "Instrument ID": 3,
+    "Instrument name": "",
+    "Player assignment (3p)": 2,
+    "Beats": 64,
+    "Codename": "Дозор"
+  },
+  {
+    "ID": 31,
+    "Clip Name": "bass9",
+    "Creature": "bass",
+    "Instrument ID": 3,
+    "Instrument name": "",
+    "Player assignment (3p)": 2,
+    "Beats": 64,
+    "Codename": "Возражение"
+  },
+  {
+    "ID": 32,
+    "Clip Name": "bass10",
+    "Creature": "bass",
+    "Instrument ID": 3,
+    "Instrument name": "",
+    "Player assignment (3p)": 2,
+    "Beats": 64,
+    "Codename": "Возмущение"
+  },
+  {
+    "ID": 33,
+    "Clip Name": "bass11",
+    "Creature": "bass",
+    "Instrument ID": 3,
+    "Instrument name": "",
+    "Player assignment (3p)": 2,
+    "Beats": 64,
+    "Codename": "Убежденность"
+  },
+  {
+    "ID": 34,
+    "Clip Name": "bass12",
+    "Creature": "bass",
+    "Instrument ID": 3,
+    "Instrument name": "",
+    "Player assignment (3p)": 2,
+    "Beats": 64,
+    "Codename": "Страх"
+  },
+  {
+    "ID": 35,
+    "Clip Name": "bass13",
+    "Creature": "bass",
+    "Instrument ID": 3,
+    "Instrument name": "",
+    "Player assignment (3p)": 2,
+    "Beats": 64,
+    "Codename": "Ленивость"
+  },
+  {
+    "ID": 36,
+    "Clip Name": "bass14",
+    "Creature": "bass",
+    "Instrument ID": 3,
+    "Instrument name": "",
+    "Player assignment (3p)": 2,
+    "Beats": 64,
+    "Codename": "Подъем по балкам"
+  },
+  {
+    "ID": 37,
+    "Clip Name": "perc1",
+    "Creature": "perc",
+    "Instrument ID": 4,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": 128,
+    "Codename": "Гвоздь"
+  },
+  {
+    "ID": 38,
+    "Clip Name": "perc2",
+    "Creature": "perc",
+    "Instrument ID": 4,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": 128,
+    "Codename": "Телефон"
+  },
+  {
+    "ID": 39,
+    "Clip Name": "perc3",
+    "Creature": "perc",
+    "Instrument ID": 4,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": 128,
+    "Codename": "Кандалы"
+  },
+  {
+    "ID": 40,
+    "Clip Name": "perc4",
+    "Creature": "perc",
+    "Instrument ID": 4,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": 128,
+    "Codename": "Инструменты"
+  },
+  {
+    "ID": 41,
+    "Clip Name": "perc5",
+    "Creature": "perc",
+    "Instrument ID": 4,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": 128,
+    "Codename": "Винтики"
+  },
+  {
+    "ID": 42,
+    "Clip Name": "perc6",
+    "Creature": "perc",
+    "Instrument ID": 4,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": 128,
+    "Codename": "Суши мастер"
+  },
+  {
+    "ID": 43,
+    "Clip Name": "perc7",
+    "Creature": "perc",
+    "Instrument ID": 4,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": 128,
+    "Codename": "Матрица"
+  },
+  {
+    "ID": 44,
+    "Clip Name": "perc8",
+    "Creature": "perc",
+    "Instrument ID": 4,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": 128,
+    "Codename": "Кастрюля"
+  },
+  {
+    "ID": 45,
+    "Clip Name": "perc9",
+    "Creature": "perc",
+    "Instrument ID": 4,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": 128,
+    "Codename": "Окей"
+  },
+  {
+    "ID": 46,
+    "Clip Name": "perc10",
+    "Creature": "perc",
+    "Instrument ID": 4,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": 128,
+    "Codename": "Девяностые"
+  },
+  {
+    "ID": 47,
+    "Clip Name": "perc11",
+    "Creature": "perc",
+    "Instrument ID": 4,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": 128,
+    "Codename": "Тряска"
+  },
+  {
+    "ID": 48,
+    "Clip Name": "perc12",
+    "Creature": "perc",
+    "Instrument ID": 4,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": 128,
+    "Codename": "Африка"
+  },
+  {
+    "ID": 49,
+    "Clip Name": "perc13",
+    "Creature": "perc",
+    "Instrument ID": 4,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": 128,
+    "Codename": "Хомяк в колесе"
+  },
+  {
+    "ID": 50,
+    "Clip Name": "perc14",
+    "Creature": "perc",
+    "Instrument ID": 4,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": 128,
+    "Codename": "Струна и железка"
+  },
+  {
+    "ID": 51,
+    "Clip Name": "perc15",
+    "Creature": "perc",
+    "Instrument ID": 4,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": 128,
+    "Codename": "Гремучая змея"
+  },
+  {
+    "ID": 52,
+    "Clip Name": "perc16",
+    "Creature": "perc",
+    "Instrument ID": 4,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": 128,
+    "Codename": "Ножки стула"
+  },
+  {
+    "ID": 53,
+    "Clip Name": "perc17",
+    "Creature": "perc",
+    "Instrument ID": 4,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": 128,
+    "Codename": "Сушеные растения"
+  },
+  {
+    "ID": 54,
+    "Clip Name": "perc18",
+    "Creature": "perc",
+    "Instrument ID": 4,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": 128,
+    "Codename": "Покалывания"
+  },
+  {
+    "ID": 55,
+    "Clip Name": "perc19",
+    "Creature": "perc",
+    "Instrument ID": 4,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": 128,
+    "Codename": "Шагающий робот"
+  },
+  {
+    "ID": 56,
+    "Clip Name": "hat1",
+    "Creature": "hat",
+    "Instrument ID": 7,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 128,
+    "Codename": "Вилка"
+  },
+  {
+    "ID": 57,
+    "Clip Name": "hat2",
+    "Creature": "hat",
+    "Instrument ID": 7,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 128,
+    "Codename": "Тарелка"
+  },
+  {
+    "ID": 58,
+    "Clip Name": "hat3",
+    "Creature": "hat",
+    "Instrument ID": 7,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 128,
+    "Codename": "Отскок"
+  },
+  {
+    "ID": 59,
+    "Clip Name": "hat4",
+    "Creature": "hat",
+    "Instrument ID": 7,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 128,
+    "Codename": "Ванька-встанька"
+  },
+  {
+    "ID": 60,
+    "Clip Name": "hat5",
+    "Creature": "hat",
+    "Instrument ID": 7,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 128,
+    "Codename": "Телевизор"
+  },
+  {
+    "ID": 61,
+    "Clip Name": "hat6",
+    "Creature": "hat",
+    "Instrument ID": 7,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 128,
+    "Codename": "Ух"
+  },
+  {
+    "ID": 62,
+    "Clip Name": "hat7",
+    "Creature": "hat",
+    "Instrument ID": 7,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 128,
+    "Codename": "Пум пам"
+  },
+  {
+    "ID": 63,
+    "Clip Name": "hat8",
+    "Creature": "hat",
+    "Instrument ID": 7,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 128,
+    "Codename": "Переворот"
+  },
+  {
+    "ID": 64,
+    "Clip Name": "hat9",
+    "Creature": "hat",
+    "Instrument ID": 7,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 128,
+    "Codename": "Стук"
+  },
+  {
+    "ID": 65,
+    "Clip Name": "hat10",
+    "Creature": "hat",
+    "Instrument ID": 7,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 128,
+    "Codename": "Попрыгун"
+  },
+  {
+    "ID": 66,
+    "Clip Name": "hat11",
+    "Creature": "hat",
+    "Instrument ID": 7,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 128,
+    "Codename": "Дерзость"
+  },
+  {
+    "ID": 67,
+    "Clip Name": "hat12",
+    "Creature": "hat",
+    "Instrument ID": 7,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 128,
+    "Codename": "Истошность"
+  },
+  {
+    "ID": 68,
+    "Clip Name": "hat13",
+    "Creature": "hat",
+    "Instrument ID": 7,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 128,
+    "Codename": "Эмигрант"
+  },
+  {
+    "ID": 69,
+    "Clip Name": "hat14",
+    "Creature": "hat",
+    "Instrument ID": 7,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 128,
+    "Codename": "Торопыга"
+  },
+  {
+    "ID": 70,
+    "Clip Name": "hat15",
+    "Creature": "hat",
+    "Instrument ID": 7,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 128,
+    "Codename": "Паук"
+  },
+  {
+    "ID": 71,
+    "Clip Name": "hat16",
+    "Creature": "hat",
+    "Instrument ID": 7,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 128,
+    "Codename": "Муравей"
+  },
+  {
+    "ID": 72,
+    "Clip Name": "hat17",
+    "Creature": "hat",
+    "Instrument ID": 7,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 128,
+    "Codename": "Пленник"
+  },
+  {
+    "ID": 73,
+    "Clip Name": "snare1",
+    "Creature": "snare",
+    "Instrument ID": 6,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 32,
+    "Codename": "Механизм"
+  },
+  {
+    "ID": 74,
+    "Clip Name": "snare2",
+    "Creature": "snare",
+    "Instrument ID": 6,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 32,
+    "Codename": "Латино"
+  },
+  {
+    "ID": 75,
+    "Clip Name": "snare3",
+    "Creature": "snare",
+    "Instrument ID": 6,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 32,
+    "Codename": "Трубы"
+  },
+  {
+    "ID": 76,
+    "Clip Name": "snare4",
+    "Creature": "snare",
+    "Instrument ID": 6,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 32,
+    "Codename": "Банки"
+  },
+  {
+    "ID": 77,
+    "Clip Name": "snare5",
+    "Creature": "snare",
+    "Instrument ID": 6,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 32,
+    "Codename": "Кисточка"
+  },
+  {
+    "ID": 78,
+    "Clip Name": "snare6",
+    "Creature": "snare",
+    "Instrument ID": 6,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 32,
+    "Codename": "Треугольник"
+  },
+  {
+    "ID": 79,
+    "Clip Name": "snare7",
+    "Creature": "snare",
+    "Instrument ID": 6,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 32,
+    "Codename": "Брусок"
+  },
+  {
+    "ID": 80,
+    "Clip Name": "snare8",
+    "Creature": "snare",
+    "Instrument ID": 6,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 32,
+    "Codename": "Не уверен"
+  },
+  {
+    "ID": 81,
+    "Clip Name": "snare9",
+    "Creature": "snare",
+    "Instrument ID": 6,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 32,
+    "Codename": "Пионер"
+  },
+  {
+    "ID": 82,
+    "Clip Name": "snare10",
+    "Creature": "snare",
+    "Instrument ID": 6,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 32,
+    "Codename": "Капли"
+  },
+  {
+    "ID": 83,
+    "Clip Name": "snare11",
+    "Creature": "snare",
+    "Instrument ID": 6,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 32,
+    "Codename": "Консервы"
+  },
+  {
+    "ID": 84,
+    "Clip Name": "snare12",
+    "Creature": "snare",
+    "Instrument ID": 6,
+    "Instrument name": "",
+    "Player assignment (3p)": 3,
+    "Beats": 32,
+    "Codename": "Космос"
+  },
+  {
+    "ID": 85,
+    "Clip Name": "kick1",
+    "Creature": "kick",
+    "Instrument ID": 5,
+    "Instrument name": "",
+    "Player assignment (3p)": 2,
+    "Beats": 32,
+    "Codename": "Батут"
+  },
+  {
+    "ID": 86,
+    "Clip Name": "kick2",
+    "Creature": "kick",
+    "Instrument ID": 5,
+    "Instrument name": "",
+    "Player assignment (3p)": 2,
+    "Beats": 32,
+    "Codename": "Сцена"
+  },
+  {
+    "ID": 87,
+    "Clip Name": "kick3",
+    "Creature": "kick",
+    "Instrument ID": 5,
+    "Instrument name": "",
+    "Player assignment (3p)": 2,
+    "Beats": 32,
+    "Codename": "Вперед"
+  },
+  {
+    "ID": 88,
+    "Clip Name": "kick4",
+    "Creature": "kick",
+    "Instrument ID": 5,
+    "Instrument name": "",
+    "Player assignment (3p)": 2,
+    "Beats": 32,
+    "Codename": "Кармен"
+  },
+  {
+    "ID": 89,
+    "Clip Name": "kick5",
+    "Creature": "kick",
+    "Instrument ID": 5,
+    "Instrument name": "",
+    "Player assignment (3p)": 2,
+    "Beats": 32,
+    "Codename": "Тореодор"
+  },
+  {
+    "ID": 90,
+    "Clip Name": "kick6",
+    "Creature": "kick",
+    "Instrument ID": 5,
+    "Instrument name": "",
+    "Player assignment (3p)": 2,
+    "Beats": 32,
+    "Codename": "Бык"
+  },
+  {
+    "ID": 91,
+    "Clip Name": "kick7",
+    "Creature": "kick",
+    "Instrument ID": 5,
+    "Instrument name": "",
+    "Player assignment (3p)": 2,
+    "Beats": 32,
+    "Codename": "Неспокойный мальчик"
+  },
+  {
+    "ID": 92,
+    "Clip Name": "effect 1",
+    "Creature": "effect",
+    "Instrument ID": 8,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": null,
+    "Codename": "effect 1"
+  },
+  {
+    "ID": 93,
+    "Clip Name": "effect 2",
+    "Creature": "effect",
+    "Instrument ID": 8,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": null,
+    "Codename": "effect 2"
+  },
+  {
+    "ID": 94,
+    "Clip Name": "effect 3",
+    "Creature": "effect",
+    "Instrument ID": 8,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": null,
+    "Codename": "effect 3"
+  },
+  {
+    "ID": 95,
+    "Clip Name": "effect 4",
+    "Creature": "effect",
+    "Instrument ID": 8,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": null,
+    "Codename": "effect 4"
+  },
+  {
+    "ID": 96,
+    "Clip Name": "effect 5",
+    "Creature": "effect",
+    "Instrument ID": 8,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": null,
+    "Codename": "effect 5"
+  },
+  {
+    "ID": 97,
+    "Clip Name": "effect 6",
+    "Creature": "effect",
+    "Instrument ID": 8,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": null,
+    "Codename": "effect 6"
+  },
+  {
+    "ID": 98,
+    "Clip Name": "effect 7",
+    "Creature": "effect",
+    "Instrument ID": 8,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": null,
+    "Codename": "effect 7"
+  },
+  {
+    "ID": 99,
+    "Clip Name": "effect 8",
+    "Creature": "effect",
+    "Instrument ID": 8,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": null,
+    "Codename": "effect 8"
+  },
+  {
+    "ID": 100,
+    "Clip Name": "effect 9",
+    "Creature": "effect",
+    "Instrument ID": 8,
+    "Instrument name": "",
+    "Player assignment (3p)": 4,
+    "Beats": null,
+    "Codename": "effect 9"
+  }
+]

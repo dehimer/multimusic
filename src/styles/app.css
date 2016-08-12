@@ -1,3 +1,43 @@
+.players-id {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    font-family: BenderRegular, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    /*justify-content: center;*/
+    /*align-content: center;*/
+}
+
+.players-id__logo {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.players-id__message {
+    margin: auto;
+    margin-bottom: 15px;
+    font-family: BenderBlack, Geneva, Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.players-id__buttons {
+    display:flex;
+    margin: auto;
+    margin-top: 15px;
+    width:100vw;
+}
+
+.players-id__buttons-button {
+    margin:auto;
+    background: #b68540;
+    width: 20%;
+    color: white;
+    text-align: center;
+    padding:5px;
+}
+
 .content {
     height:80%;
     width:100vw;

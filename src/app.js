@@ -7,224 +7,264 @@ import './styles/app.css';
 
 
 let root_el = $('#root');
-let content = $(`
-    <div class='header'>
-    
-        <div class='header__column'>
-            <div class='logo'>
-                <img src='logo.jpg'/>
-            </div>
-        </div>
-        <div class='header__column'>
-            <div class='progress-bar'>
-                <div class='progress-bar__content'>
-                    <div style='width:100%;'>Положение в такте</div>
-                    <div class='progress-bar__line-wrapper'>
-                        <div class='progress-bar__line'></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='header__column'>
-            <div class='tacts-bar'>
-                <div class='tacts-bar__content'>
-                    <div style='width:100%;'>Тактов сыграно</div>
-                    <div class='tacts-bar__line-wrapper'>
-                        <div class='tacts-bar__line tacts-bar__line_active'></div>
-                        <div class='tacts-bar__line'></div>
-                        <div class='tacts-bar__line'></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class='content'>
-        <div class='column'>
-            <div class='column__content'>
-                <div class='melodies__list-name melodies__list-name-left'></div>
-                <div class='melodies__list-wrapper-wrapper'>
-                    <div class='melodies__list-scrollline'></div>
-                    <div class='melodies__list-wrapper'>
-                        <div class='melodies__list melodies__list-left'></div>
-                    </div>
-                </div>
-                <div class='live-button__wrapper'>
-                    <div class='live__button live__button-left'>
-                        <div class='live__button-text'>LIVE</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='column'>
-            <div class='column__content'>
-                <div class='melodies__list-name melodies__list-name-right'></div>
-                <div class='melodies__list-wrapper-wrapper'>
-                    <div class='melodies__list-scrollline'></div>
-                    <div class='melodies__list-wrapper'>
-                        <div class='melodies__list melodies__list-right'></div>
-                    </div>
-                </div>
-                <div class='live-button__wrapper'>
-                    <div class='live__button live__button-right'>
-                        <div class='live__button-text'>LIVE</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-`);
 
-root_el.append(content);
+//show first pages
+const stages = {
+    first: function(playersid, socket) {
+        console.log(playersid);
+        let content = $(`
+            <div class='players-id'>
+                <div class='players-id__logo'>
+                    <img src='logo.jpg'/>
+                </div>
+                <div class='players-id__message'>Выберите номер игрока</div>
+                <div class='players-id__buttons'>
+                ${
+                    playersid.map(playerid => {
+                        return (`<div data-id='${playerid}' class='players-id__buttons-button'>
+                            ${playerid}
+                        </div>`)
+                    }).join('')
+                }
+                </div>
+            </div>
+        `);
 
+        root_el.append(content);
 
+        root_el.find('.players-id__button').on('click', (e) => {
 
-const lists = {
-    els: {
-        left: root_el.find('.melodies__list-left'),
-        right: root_el.find('.melodies__list-right')
+            const playerid = e.target.dataset.id;
+
+            alert(playerid);
+            socket.emit('set:playerId', playerid);
+
+        });
     },
-    name_els: {
-        left: root_el.find('.melodies__list-name-left'),
-        right: root_el.find('.melodies__list-name-right')
-    },
-    scrolls: {
-        create: function(){
-            console.log(this);
+    second: function(socket) {
+        let content = $(`
+            <div class='header'>
+            
+                <div class='header__column'>
+                    <div class='logo'>
+                        <img src='logo.jpg'/>
+                    </div>
+                </div>
+                <div class='header__column'>
+                    <div class='progress-bar'>
+                        <div class='progress-bar__content'>
+                            <div style='width:100%;'>Положение в такте</div>
+                            <div class='progress-bar__line-wrapper'>
+                                <div class='progress-bar__line'></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='header__column'>
+                    <div class='tacts-bar'>
+                        <div class='tacts-bar__content'>
+                            <div style='width:100%;'>Тактов сыграно</div>
+                            <div class='tacts-bar__line-wrapper'>
+                                <div class='tacts-bar__line tacts-bar__line_active'></div>
+                                <div class='tacts-bar__line'></div>
+                                <div class='tacts-bar__line'></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='content'>
+                <div class='column'>
+                    <div class='column__content'>
+                        <div class='melodies__list-name melodies__list-name-left'></div>
+                        <div class='melodies__list-wrapper-wrapper'>
+                            <div class='melodies__list-scrollline'></div>
+                            <div class='melodies__list-wrapper'>
+                                <div class='melodies__list melodies__list-left'></div>
+                            </div>
+                        </div>
+                        <div class='live-button__wrapper'>
+                            <div class='live__button live__button-left'>
+                                <div class='live__button-text'>LIVE</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='column'>
+                    <div class='column__content'>
+                        <div class='melodies__list-name melodies__list-name-right'></div>
+                        <div class='melodies__list-wrapper-wrapper'>
+                            <div class='melodies__list-scrollline'></div>
+                            <div class='melodies__list-wrapper'>
+                                <div class='melodies__list melodies__list-right'></div>
+                            </div>
+                        </div>
+                        <div class='live-button__wrapper'>
+                            <div class='live__button live__button-right'>
+                                <div class='live__button-text'>LIVE</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `);
 
-            Object.keys(this.els).map(sideName=>{
-                const el = this.els[sideName];
+        root_el.append(content);
 
-                this.scrolls[sideName] = new IScroll(el.parent()[0], {
-                    mouseWheel: true,
-                    scrollbars: true,
-                    // fadeScrollbars: true,
-                    tap: true,
-                    // scrollbars: 'custom',
-                    resizeScrollbars: false
-                });
-            });
-        }
-    },
-    update: function(sideName, row){
-        console.log(row.name+':'+!!this.name_els);
-        this.name_els[sideName].html(row.name);
-        this.els[sideName].html(this.generate(row));
-        this.scrolls[sideName].refresh();
-    },
-    generate: (row) => {
+        const lists = {
+            els: {
+                left: root_el.find('.melodies__list-left'),
+                right: root_el.find('.melodies__list-right')
+            },
+            name_els: {
+                left: root_el.find('.melodies__list-name-left'),
+                right: root_el.find('.melodies__list-name-right')
+            },
+            scrolls: {
+                create: function(){
+                    console.log(this);
 
-        return row.list.map( melody => {
+                    Object.keys(this.els).map(sideName=>{
+                        const el = this.els[sideName];
 
-            let classNames = '';
+                        this.scrolls[sideName] = new IScroll(el.parent()[0], {
+                            mouseWheel: true,
+                            scrollbars: true,
+                            // fadeScrollbars: true,
+                            tap: true,
+                            // scrollbars: 'custom',
+                            resizeScrollbars: false
+                        });
+                    });
+                }
+            },
+            update: function(sideName, row){
+                console.log(row.name+':'+!!this.name_els);
+                this.name_els[sideName].html(row.name);
+                this.els[sideName].html(this.generate(row));
+                this.scrolls[sideName].refresh();
+            },
+            generate: (row) => {
 
-            if(melody.id === row.melodyid) {
-                classNames += 'melodies__list-item_active'
-            }
+                return row.list.map( melody => {
 
-            return (`
+                    let classNames = '';
+
+                    if(melody.id === row.melodyid) {
+                        classNames += 'melodies__list-item_active'
+                    }
+
+                    return (`
                     <div class='melodies__list-item ${classNames}' data-id='${melody.id}' data-rowid='${row.id}'>
                         <span>${melody.name}</span>
                     </div>
                 `)}
-        ).join('');
-    },
-    init: function(){
-        // console.log()
-        this.scrolls.create.call(this);
+                ).join('');
+            },
+            init: function(){
+                // console.log()
+                this.scrolls.create.call(this);
+            }
+        };
+
+        lists.init();
+
+
+        const progressLine = {
+            el: root_el.find('.progress-bar__line'),
+            // getColor: (value) => {
+            //     //value from 0 to 1
+            //     var hue=((1-value)*120).toString(10);
+            //     return ['hsl(',hue,',100%,50%)'].join('');
+            // },
+            nextTick: function (volume) {
+                const newVolume = typeof volume === 'undefined' ? Math.random() : volume;
+                // const volumeColor = this.getColor(newVolume*0.9);
+                // console.log(newVolume+':'+volumeColor);
+                this.el.css({
+                    width: newVolume*100
+                    // backgroundColor: volumeColor
+                });
+            },
+            switch: function (active) {
+                console.log(active);
+                if(active){
+                    clearInterval(this.intF);
+                    this.intF = setInterval(::this.nextTick, 100)
+                }else{
+                    this.nextTick(0);
+                    clearInterval(this.intF);
+                }
+
+            }
+        };
+
+        const liveButtons = {
+            els: {
+                left: root_el.find('.live__button-left'),
+                right: root_el.find('.live__button-right')
+            },
+            switch: function (sideName, live) {
+                if(live){
+                    this.els[sideName].addClass('live__button_active');
+                }else{
+                    this.els[sideName].removeClass('live__button_active');
+                }
+            }
+        };
+
+        return function(state) {
+            lists.update('left', state.melodies['01']);
+            lists.update('right', state.melodies['02']);
+
+            progressLine.switch(state.melodies['01'].live || state.melodies['02'].live);
+
+            liveButtons.switch('left', state.melodies['01'].live);
+            liveButtons.switch('right', state.melodies['02'].live);
+
+
+            root_el.find('.melodies__list-item').on('tap', (e) => {
+
+                const rowid = e.target.dataset.rowid;
+                const id = e.target.dataset.id;
+                console.log(rowid);
+                console.log(id);
+                if(id === state.melodies[rowid].melodyid){
+                    socket.emit('melody_selected', rowid, '00');
+                }else{
+                    socket.emit('melody_selected', rowid, id);
+                }
+            });
+
+            liveButtons.els['left'].off('click').on('click', () => {
+                // alert('!');
+                const rowid = '01';
+                socket.emit('switch_live', rowid, !state.melodies[rowid].live);
+            });
+            liveButtons.els['right'].off('click').on('click', () => {
+                const rowid = '02';
+                socket.emit('switch_live', rowid, !state.melodies[rowid].live);
+            })
+        };
+
     }
 };
-
-lists.init();
-
-
-const progressLine = {
-    el: root_el.find('.progress-bar__line'),
-    // getColor: (value) => {
-    //     //value from 0 to 1
-    //     var hue=((1-value)*120).toString(10);
-    //     return ['hsl(',hue,',100%,50%)'].join('');
-    // },
-    nextTick: function (volume) {
-        const newVolume = typeof volume === 'undefined' ? Math.random() : volume;
-        // const volumeColor = this.getColor(newVolume*0.9);
-        // console.log(newVolume+':'+volumeColor);
-        this.el.css({
-            width: newVolume*100
-            // backgroundColor: volumeColor
-        });
-    },
-    switch: function (active) {
-        console.log(active);
-        if(active){
-            clearInterval(this.intF);
-            this.intF = setInterval(::this.nextTick, 100)
-        }else{
-            this.nextTick(0);
-            clearInterval(this.intF);
-        }
-
-    }
-};
-
-const liveButtons = {
-    els: {
-        left: root_el.find('.live__button-left'),
-        right: root_el.find('.live__button-right')
-    },
-    switch: function (sideName, live) {
-        if(live){
-            this.els[sideName].addClass('live__button_active');
-        }else{
-            this.els[sideName].removeClass('live__button_active');
-        }
-    }
-};
-
 
 $.get('/serverip', (serverip) => {
 
     const socket = io('http://'+serverip);
+    socket.on('playersId', (playersId) => {
+        stages.first(playersId, socket);
+    });
 
-    let state = {};
+    let refresh = void 0;
+    socket.on('state', (state) => {
 
-    socket.on('state', (clientState) => {
-
-        state = clientState;
-        // console.log(state);
-
-        lists.update('left', state.melodies['01']);
-        lists.update('right', state.melodies['02']);
-
-        progressLine.switch(state.melodies['01'].live || state.melodies['02'].live);
-
-        liveButtons.switch('left', state.melodies['01'].live);
-        liveButtons.switch('right', state.melodies['02'].live);
-
-
-        root_el.find('.melodies__list-item').on('tap', (e) => {
-
-            const rowid = e.target.dataset.rowid;
-            const id = e.target.dataset.id;
-            console.log(rowid);
-            console.log(id);
-            if(id === state.melodies[rowid].melodyid){
-                socket.emit('melody_selected', rowid, '00');
-            }else{
-                socket.emit('melody_selected', rowid, id);
-            }
-        });
-
-
-        liveButtons.els['left'].on('click', () => {
-            const rowid = '01';
-            socket.emit('switch_live', rowid, !state.melodies[rowid].live);
-        });
-        liveButtons.els['right'].on('click', () => {
-            const rowid = '02';
-            socket.emit('switch_live', rowid, !state.melodies[rowid].live);
-        })
-
-
+        if(typeof refresh === 'function') {
+            refresh(state)
+        } else {
+            refresh = stages.second(socket);
+        }
     });
 
 });

@@ -4,10 +4,62 @@ var fs = require('fs');
 const express = require('express');
 const osc = require('osc');
 const config = require('./config');
-console.log(__dirname+'/melodies.json');
 const melodies = JSON.parse(fs.readFileSync(__dirname+'/melodies.json', 'utf8'));
+const loops = JSON.parse(fs.readFileSync(__dirname+'/loops.json', 'utf8'));
 
 const app = express();
+
+
+/*
+*
+* обновить таблицу лупов можно выполнив перевод следующие шаги:
+*
+* 1. из таблицы excel список загрузить к себе в формате CSV
+* 2. сконвертировать его в JSON (можно тут: http://www.convertcsv.com/csv-to-json.htm)
+* 3. сохранить результат в файл loops.json
+*
+*
+* ниже результирующий json я дополнительно преобразую в дерево
+*
+* {player:id->instruments:id->{name, selected, live, loops:[{id, name}]}}
+*
+* */
+const parsedLoops = loops.reduce((result, loop)=>{
+
+    const playerId = loop['Player assignment (3p)'];
+    const instrumentId = loop['Instrument ID'];
+    const instrumentName = loop['Instrument name'];
+    const loopId = loop['ID'];
+    const loopName = loop['Codename'];
+
+    //get users
+    if(typeof result[playerId] === 'undefined'){
+        result[playerId] = {}
+    }
+
+    //get users instruments
+    if(typeof result[playerId][instrumentId] === 'undefined'){
+        result[playerId][instrumentId] = {
+            name: instrumentName,
+            loops: [],
+            selected: 0,
+            live: false
+        };
+    }
+
+    //get loop
+    result[playerId][instrumentId].loops.push({
+        id: loopId,
+        name: loopName
+    });
+
+    return result;
+
+}, {});
+
+fs.writeFileSync(__dirname+'/parsedLoops.json', JSON.stringify(parsedLoops));
+console.log(parsedLoops);
+
 
 /* hot reload for webpack */
 if(process.env.npm_lifecycle_event === 'dev')
@@ -95,40 +147,39 @@ const sendOSC = (message, params) => {
 * */
 
 const io = require('socket.io')(server);
-let lastClientId = 1;
+
 io.on('connection', (socket) => {
 	console.log('socket client connection');
 
-    const playerid = ++lastClientId;
+    let playerId = void 0;
 
-    let client_state = {
-        melodies: melodies.reduce((res, row)=>{
-            res[row.id] = row;
-            return res;
-        }, {})
-    };
+    let client_state = void 0;
 
     // console.log(client_state.melodies);
+    const playersId = Object.keys(parsedLoops).map(playerId => playerId);
+    socket.emit('playersId', playersId);
 
-	socket.emit('state', client_state);
+    socket.on('set:playerId', function (playerId) {
+        client_state = parsedLoops[playerId]
+    });
 
-
+    //simple - select melody in list
     socket.on('melody_selected', (rowid, melodyid) => {
 
         client_state.melodies[rowid].melodyid = melodyid;
 
-        sendOSC('/melody', [playerid, rowid, +melodyid]);
+        // sendOSC('/melody', [playerid, rowid, +melodyid]);
 
         socket.emit('state', client_state);
 
     });
 
     socket.on('switch_live', (rowid, live) => {
-
-        live = live && client_state.melodies[rowid].melodyid;
+        // console.log('switch');
         client_state.melodies[rowid].live = live;
+        const melodyid =  live?client_state.melodies[rowid].melodyid:0;
 
-        sendOSC('/live', [playerid, live?1:0]);
+        sendOSC('/melody', [+playerid, +rowid, +melodyid]);
 
         socket.emit('state', client_state);
     })
