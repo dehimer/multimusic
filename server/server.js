@@ -4,62 +4,10 @@ var fs = require('fs');
 const express = require('express');
 const osc = require('osc');
 const config = require('./config');
-const melodies = JSON.parse(fs.readFileSync(__dirname+'/melodies.json', 'utf8'));
-const loops = JSON.parse(fs.readFileSync(__dirname+'/loops.json', 'utf8'));
+// const melodies = JSON.parse(fs.readFileSync(__dirname+'/melodies.json', 'utf8'));
+
 
 const app = express();
-
-
-/*
-*
-* обновить таблицу лупов можно выполнив перевод следующие шаги:
-*
-* 1. из таблицы excel список загрузить к себе в формате CSV
-* 2. сконвертировать его в JSON (можно тут: http://www.convertcsv.com/csv-to-json.htm)
-* 3. сохранить результат в файл loops.json
-*
-*
-* ниже результирующий json я дополнительно преобразую в дерево
-*
-* {player:id->instruments:id->{name, selected, live, loops:[{id, name}]}}
-*
-* */
-const parsedLoops = loops.reduce((result, loop)=>{
-
-    const playerId = loop['Player assignment (3p)'];
-    const instrumentId = loop['Instrument ID'];
-    const instrumentName = loop['Instrument name'];
-    const loopId = loop['ID'];
-    const loopName = loop['Codename'];
-
-    //get users
-    if(typeof result[playerId] === 'undefined'){
-        result[playerId] = {}
-    }
-
-    //get users instruments
-    if(typeof result[playerId][instrumentId] === 'undefined'){
-        result[playerId][instrumentId] = {
-            name: instrumentName,
-            loops: [],
-            selected: 0,
-            live: false
-        };
-    }
-
-    //get loop
-    result[playerId][instrumentId].loops.push({
-        id: loopId,
-        name: loopName
-    });
-
-    return result;
-
-}, {});
-
-fs.writeFileSync(__dirname+'/parsedLoops.json', JSON.stringify(parsedLoops));
-console.log(parsedLoops);
-
 
 /* hot reload for webpack */
 if(process.env.npm_lifecycle_event === 'dev')
@@ -123,6 +71,11 @@ udpPort.on("bundle", function (oscBundle, timeTag, info) {
     console.log("Remote info is: ", info);
 });
 
+
+udpPort.on("loop", function (oscMsg) {
+    console.log("An OSC message just arrived!", oscMsg);
+});
+
 // Open the socket.
 udpPort.open();
 
@@ -136,7 +89,10 @@ const sendOSC = (message, params) => {
         address: message,
         args: params
     }, music_server.address, music_server.port);
+};
 
+const getOSC = (message, cb) => {
+   udpPort.on('message', cb);
 };
 
 
@@ -155,18 +111,118 @@ io.on('connection', (socket) => {
 
     let client_state = void 0;
 
-    // console.log(client_state.melodies);
-    const playersId = Object.keys(parsedLoops).map(playerId => playerId);
-    socket.emit('playersId', playersId);
+    let parsedLoops = void 0;
 
-    socket.on('set:playerId', function (playerId) {
-        client_state = parsedLoops[playerId]
+    const onLoop = function (instruments) {
+        parsedLoops = instruments.reduce((result, loop)=>{
+
+            const instrumentId = loop['Instrument ID'];
+            const instrumentName = loop['Instrument name'];
+            const loopId = loop['ID'];
+            const loopName = loop['Codename'];
+
+
+            //get users instruments
+            if(typeof result[instrumentId] === 'undefined'){
+                result[instrumentId] = {
+                    id: instrumentId,
+                    name: instrumentName,
+                    loops: [],
+                    selectedLoopId: 0,
+                    live: false
+                };
+            }
+
+            //get loop
+            result[instrumentId].loops.push({
+                id: loopId,
+                name: loopName
+            });
+
+            return result;
+
+        }, {});
+
+        client_state = parsedLoops;
+        socket.emit('state', client_state);
+    };
+
+    getOSC('loop', onLoop);
+
+
+    // const playersId = Object.keys(parsedLoops).map(playerId => playerId);
+    socket.emit('playersId', config.playersId);
+
+    socket.on('set:playerId', function (newPlayerId) {
+        console.log('set:playerId: '+newPlayerId);
+        playerId = newPlayerId;
+
+        sendOSC('/player', +playerId);
+
+        if(config.emulateMusicServer){
+            /*
+             *
+             * обновить таблицу лупов можно выполнив перевод следующие шаги:
+             *
+             * 1. из таблицы excel список загрузить к себе в формате CSV
+             * 2. сконвертировать его в JSON (можно тут: http://www.convertcsv.com/csv-to-json.htm)
+             * 3. сохранить результат в файл loops.json
+             *
+             *
+             * ниже результирующий json я дополнительно преобразую в дерево
+             *
+             * {player:id->instruments:id->{name, selected, live, loops:[{id, name}]}}
+             *
+             * */
+            const loops = JSON.parse(fs.readFileSync(__dirname+'/loops.json', 'utf8'));
+            const parsedLoops = loops.reduce((result, loop)=>{
+
+                const playerId = loop['Player assignment (3p)'];
+                const instrumentId = loop['Instrument ID'];
+                const instrumentName = loop['Instrument name'];
+                const loopId = loop['ID'];
+                const loopName = loop['Codename'];
+
+                //get users
+                if(typeof result[playerId] === 'undefined'){
+                    result[playerId] = {}
+                }
+
+                //get users instruments
+                if(typeof result[playerId][instrumentId] === 'undefined'){
+                    result[playerId][instrumentId] = {
+                        id: instrumentId,
+                        name: instrumentName,
+                        loops: [],
+                        selectedLoopId: 0,
+                        live: false
+                    };
+                }
+
+                //get loop
+                result[playerId][instrumentId].loops.push({
+                    id: loopId,
+                    name: loopName
+                });
+
+                return result;
+
+            }, {});
+
+            // onLoop(parsedLoops[playerId]);
+            // fs.writeFileSync(__dirname+'/parsedLoops.json', JSON.stringify(parsedLoops));
+            // console.log(parsedLoops);
+
+            client_state = parsedLoops[playerId];
+            socket.emit('state', client_state);
+        }
+
     });
 
     //simple - select melody in list
-    socket.on('melody_selected', (rowid, melodyid) => {
+    socket.on('melody_selected', (instrumentId, selectedLoopId) => {
 
-        client_state.melodies[rowid].melodyid = melodyid;
+        client_state[instrumentId].selectedLoopId = selectedLoopId;
 
         // sendOSC('/melody', [playerid, rowid, +melodyid]);
 
@@ -174,13 +230,16 @@ io.on('connection', (socket) => {
 
     });
 
-    socket.on('switch_live', (rowid, live) => {
+    socket.on('switch_live', (instrumentId, live) => {
         // console.log('switch');
-        client_state.melodies[rowid].live = live;
-        const melodyid =  live?client_state.melodies[rowid].melodyid:0;
+        client_state[instrumentId].live = live;
+        const loopId =  live?client_state[instrumentId].selectedLoopId:0;
 
-        sendOSC('/melody', [+playerid, +rowid, +melodyid]);
+        sendOSC('/live', [+playerId, +instrumentId, +loopId ]);
 
         socket.emit('state', client_state);
-    })
+    });
+    // socket.on('disconnect', function () {
+    //     playerId = void 0;
+    // });
 });

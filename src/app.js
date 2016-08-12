@@ -30,13 +30,13 @@ const stages = {
             </div>
         `);
 
-        root_el.append(content);
+        root_el.html(content);
 
-        root_el.find('.players-id__button').on('click', (e) => {
+        root_el.find('.players-id__buttons-button').on('click', (e) => {
 
             const playerid = e.target.dataset.id;
 
-            alert(playerid);
+            // alert(playerid);
             socket.emit('set:playerId', playerid);
 
         });
@@ -109,7 +109,7 @@ const stages = {
             </div>
         `);
 
-        root_el.append(content);
+        root_el.html(content);
 
         const lists = {
             els: {
@@ -122,7 +122,7 @@ const stages = {
             },
             scrolls: {
                 create: function(){
-                    console.log(this);
+                    // console.log(this);
 
                     Object.keys(this.els).map(sideName=>{
                         const el = this.els[sideName];
@@ -138,27 +138,27 @@ const stages = {
                     });
                 }
             },
-            update: function(sideName, row){
-                console.log(row.name+':'+!!this.name_els);
-                this.name_els[sideName].html(row.name);
-                this.els[sideName].html(this.generate(row));
+            update: function(sideName, instrument){
+                // console.log(instrument.name+':'+!!this.name_els);
+                this.name_els[sideName].html(instrument.name);
+                this.els[sideName].html(this.generate(instrument));
                 this.scrolls[sideName].refresh();
             },
-            generate: (row) => {
+            generate: (instrument) => {
 
-                return row.list.map( melody => {
+                return instrument.loops.map( loop => {
 
                     let classNames = '';
 
-                    if(melody.id === row.melodyid) {
+                    if(loop.id === instrument.selectedLoopId) {
                         classNames += 'melodies__list-item_active'
                     }
-
+                    // console.log(instrument);
                     return (`
-                    <div class='melodies__list-item ${classNames}' data-id='${melody.id}' data-rowid='${row.id}'>
-                        <span>${melody.name}</span>
-                    </div>
-                `)}
+                        <div class='melodies__list-item ${classNames}' data-id='${loop.id}' data-instrumentid='${instrument.id}'>
+                            <span>${loop.name}</span>
+                        </div>
+                    `)}
                 ).join('');
             },
             init: function(){
@@ -213,37 +213,40 @@ const stages = {
             }
         };
 
-        return function(state) {
-            lists.update('left', state.melodies['01']);
-            lists.update('right', state.melodies['02']);
+        return function(instruments) {
+            const instrumentsId = Object.keys(instruments);
+            console.log(instruments);
+            const leftInstrument = instruments[instrumentsId[0]];
+            const rightInstrument = instruments[instrumentsId[1]];
 
-            progressLine.switch(state.melodies['01'].live || state.melodies['02'].live);
+            lists.update('left', leftInstrument);
+            lists.update('right', rightInstrument);
 
-            liveButtons.switch('left', state.melodies['01'].live);
-            liveButtons.switch('right', state.melodies['02'].live);
+            progressLine.switch(leftInstrument.live || rightInstrument.live);
+
+            liveButtons.switch('left', leftInstrument.live);
+            liveButtons.switch('right', rightInstrument.live);
 
 
             root_el.find('.melodies__list-item').on('tap', (e) => {
+                // console.log(e.target.dataset);
+                const instrumentId = +e.target.dataset.instrumentid;
+                const loopId = +e.target.dataset.id;
 
-                const rowid = e.target.dataset.rowid;
-                const id = e.target.dataset.id;
-                console.log(rowid);
-                console.log(id);
-                if(id === state.melodies[rowid].melodyid){
-                    socket.emit('melody_selected', rowid, '00');
+                if(loopId === instruments[instrumentId].selectedLoopId){
+                    socket.emit('melody_selected', instrumentId, 0);
                 }else{
-                    socket.emit('melody_selected', rowid, id);
+                    socket.emit('melody_selected', instrumentId, loopId);
                 }
             });
 
             liveButtons.els['left'].off('click').on('click', () => {
-                // alert('!');
-                const rowid = '01';
-                socket.emit('switch_live', rowid, !state.melodies[rowid].live);
+                const instrumentId = instrumentsId[0];
+                socket.emit('switch_live', instrumentId, !instruments[instrumentId].live);
             });
             liveButtons.els['right'].off('click').on('click', () => {
-                const rowid = '02';
-                socket.emit('switch_live', rowid, !state.melodies[rowid].live);
+                const instrumentId = instrumentsId[1];
+                socket.emit('switch_live', instrumentId, !instruments[instrumentId].live);
             })
         };
 
@@ -259,12 +262,11 @@ $.get('/serverip', (serverip) => {
 
     let refresh = void 0;
     socket.on('state', (state) => {
-
-        if(typeof refresh === 'function') {
-            refresh(state)
-        } else {
+        // console.log(state);
+        if(typeof refresh !== 'function') {
             refresh = stages.second(socket);
         }
+        refresh(state)
     });
 
 });
