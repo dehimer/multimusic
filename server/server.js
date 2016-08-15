@@ -92,7 +92,21 @@ const sendOSC = (message, params) => {
 };
 
 const getOSC = (message, cb) => {
-   udpPort.on('message', cb);
+    udpPort.on(message, cb);
+
+    if(config.emulateMusicServer){
+        if(message === '/step'){
+            let num = 0;
+            let time = 0;
+            let nextStep = function () {
+                num = (num+1)%3;
+                time = parseInt(2000*Math.random());
+                cb([num+1, time]);
+                setTimeout(nextStep, time);
+            };
+            nextStep();
+        }
+    }
 };
 
 
@@ -109,22 +123,32 @@ io.on('connection', (socket) => {
 
     let playerId = void 0;
 
-    let client_state = void 0;
+    let client_state = {step:{num:0, time:0}};
 
     let parsedLoops = void 0;
 
     /*
-        ВОТ ТУТ НАДО ВОЗВРАЩАТЬ СПИСОК ЛУПОВ ДЛЯ КОНКРЕТНОГО ПОЛЬЗОВАТЕЛЯ
-        пример в файле loops.json (но там с playerid которых в ответе не должно быть)
+        ВОТ ТУТ НАДО ВОЗВРАЩАТЬ СПИСОК ЛУПОВ
+        пример в файле loops.json
      */
     const onLoop = function (instruments) {
+
+        if(client_state.instruments){
+            return;
+        }
+
         parsedLoops = instruments.reduce((result, loop)=>{
 
-            const instrumentId = loop['Instrument ID'];
-            const instrumentName = loop['Instrument name'];
+            const playerId = loop['Playerassignment(3p)'];
+            const instrumentId = loop['InstrumentID'];
+            const instrumentName = loop['Instrumentname'];
             const loopId = loop['ID'];
             const loopName = loop['Codename'];
 
+            //get users
+            if(typeof result[playerId] === 'undefined'){
+                result[playerId] = {}
+            }
 
             //get users instruments
             if(typeof result[instrumentId] === 'undefined'){
@@ -147,11 +171,22 @@ io.on('connection', (socket) => {
 
         }, {});
 
-        client_state = parsedLoops;
+
+        client_state.instruments = parsedLoops;
         socket.emit('state', client_state);
     };
 
-    getOSC('loop', onLoop);
+    getOSC('/loop', onLoop);
+
+    getOSC('/step', function (step) {
+        // io.emit('step', step);
+        client_state.step = {num:step[0], time:step[1]};
+        console.log(step);
+        if(client_state.instruments){
+            socket.emit('state', client_state);
+        }
+    });
+
 
 
     // const playersId = Object.keys(parsedLoops).map(playerId => playerId);
@@ -181,9 +216,9 @@ io.on('connection', (socket) => {
             const loops = JSON.parse(fs.readFileSync(__dirname+'/loops.json', 'utf8'));
             const parsedLoops = loops.reduce((result, loop)=>{
 
-                const playerId = loop['Player assignment (3p)'];
-                const instrumentId = loop['Instrument ID'];
-                const instrumentName = loop['Instrument name'];
+                const playerId = loop['Playerassignment(3p)'];
+                const instrumentId = loop['InstrumentID'];
+                const instrumentName = loop['Instrumentname'];
                 const loopId = loop['ID'];
                 const loopName = loop['Codename'];
 
@@ -217,7 +252,7 @@ io.on('connection', (socket) => {
             // fs.writeFileSync(__dirname+'/parsedLoops.json', JSON.stringify(parsedLoops));
             // console.log(parsedLoops);
 
-            client_state = parsedLoops[playerId];
+            client_state.instruments = parsedLoops[playerId];
             socket.emit('state', client_state);
         }
 
@@ -226,7 +261,7 @@ io.on('connection', (socket) => {
     //simple - select melody in list
     socket.on('melody_selected', (instrumentId, selectedLoopId) => {
 
-        client_state[instrumentId].selectedLoopId = selectedLoopId;
+        client_state.instruments[instrumentId].selectedLoopId = selectedLoopId;
 
         sendOSC('/local', [+playerId, +selectedLoopId]);
 
@@ -237,13 +272,13 @@ io.on('connection', (socket) => {
 
     socket.on('switch_live', (instrumentId) => {
 
-        if(client_state[instrumentId].liveLoopId != client_state[instrumentId].selectedLoopId) {
-            client_state[instrumentId].liveLoopId = client_state[instrumentId].selectedLoopId;
+        if(client_state.instruments[instrumentId].liveLoopId != client_state.instruments[instrumentId].selectedLoopId) {
+            client_state.instruments[instrumentId].liveLoopId = client_state.instruments[instrumentId].selectedLoopId;
         } else {
-            client_state[instrumentId].liveLoopId = 0;
+            client_state.instruments[instrumentId].liveLoopId = 0;
         }
 
-        const liveLoopId =  client_state[instrumentId].liveLoopId;
+        const liveLoopId =  client_state.instruments[instrumentId].liveLoopId;
 
         sendOSC('/live', [+playerId, +liveLoopId]);
 

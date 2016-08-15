@@ -55,7 +55,7 @@ const stages = {
                         <div class='progress-bar__content'>
                             <div style='width:100%;'>Положение в такте</div>
                             <div class='progress-bar__line-wrapper'>
-                                <div class='progress-bar__line'></div>
+                                
                             </div>
                         </div>
                     </div>
@@ -65,9 +65,6 @@ const stages = {
                         <div class='tacts-bar__content'>
                             <div style='width:100%;'>Тактов сыграно</div>
                             <div class='tacts-bar__line-wrapper'>
-                                <div class='tacts-bar__line tacts-bar__line_active'></div>
-                                <div class='tacts-bar__line'></div>
-                                <div class='tacts-bar__line'></div>
                             </div>
                         </div>
                     </div>
@@ -173,32 +170,40 @@ const stages = {
         lists.init();
 
 
-        const progressLine = {
-            el: root_el.find('.progress-bar__line'),
-            // getColor: (value) => {
-            //     //value from 0 to 1
-            //     var hue=((1-value)*120).toString(10);
-            //     return ['hsl(',hue,',100%,50%)'].join('');
-            // },
-            nextTick: function (volume) {
-                const newVolume = typeof volume === 'undefined' ? Math.random() : volume;
-                // const volumeColor = this.getColor(newVolume*0.9);
-                // console.log(newVolume+':'+volumeColor);
-                this.el.css({
-                    width: newVolume*100
-                    // backgroundColor: volumeColor
-                });
-            },
-            switch: function (active) {
-                console.log(active);
-                if(active){
-                    clearInterval(this.intF);
-                    this.intF = setInterval(::this.nextTick, 100)
-                }else{
-                    this.nextTick(0);
-                    clearInterval(this.intF);
-                }
+        const tactsBar = {
+            el: root_el.find('.tacts-bar__line-wrapper'),
+            update: function (step) {
 
+                const markup = [1, 2, 3].map(currentStep => {
+                    let classNames = 'tacts-bar__line';
+                    if(currentStep <= step) {
+                        classNames += ' tacts-bar__line_active';
+                    }
+                    return (`<div class='${classNames}'></div>`)
+                });
+
+                this.el.html(markup);
+            }
+        };
+
+        const progressLine = {
+            el: root_el.find('.progress-bar__line-wrapper'),
+            update: function (time) {
+
+                // const duration = transition-duration: 0.5s;;
+
+                this.el.html('<div class="progress-bar__line"></div>');
+                // console.log(0);
+                // this.el.css({
+                //     transitionDuration: '0s',
+                //     width:'0px'
+                // });
+
+                console.log(time);
+                this.el.css({
+                    transitionDuration: time/1000+'s',
+                    width:'100%'
+                });
             }
         };
 
@@ -219,16 +224,20 @@ const stages = {
             }
         };
 
-        return function(instruments) {
+        return function(state) {
+            console.log(state);
+
+
+            const instruments = state.instruments;
             const instrumentsId = Object.keys(instruments);
-            console.log(instruments);
             const leftInstrument = instruments[instrumentsId[0]];
             const rightInstrument = instruments[instrumentsId[1]];
 
             lists.update('left', leftInstrument);
             lists.update('right', rightInstrument);
 
-            progressLine.switch(leftInstrument.live || rightInstrument.live);
+            tactsBar.update(state.step.num);
+            progressLine.update(state.step.time);
 
             liveButtons.switch('left', leftInstrument);
             liveButtons.switch('right', rightInstrument);
