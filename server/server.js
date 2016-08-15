@@ -224,7 +224,8 @@ io.on('connection', (socket) => {
 
         client_state[instrumentId].selectedLoopId = selectedLoopId;
 
-        // sendOSC('/melody', [playerid, rowid, +melodyid]);
+        sendOSC('/local', [+playerId, +selectedLoopId]);
+
 
         socket.emit('state', client_state);
 
@@ -235,7 +236,7 @@ io.on('connection', (socket) => {
         client_state[instrumentId].live = live;
         const loopId =  live?client_state[instrumentId].selectedLoopId:0;
 
-        sendOSC('/live', [+playerId, +instrumentId, +loopId ]);
+        sendOSC('/live', [+playerId, +loopId ]);
 
         socket.emit('state', client_state);
     });
