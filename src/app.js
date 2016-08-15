@@ -151,8 +151,11 @@ const stages = {
                     let classNames = '';
 
                     if(loop.id === instrument.selectedLoopId) {
-                        classNames += 'melodies__list-item_active'
+                        classNames += ' melodies__list-item_active'
+                    } else if(loop.id === instrument.liveLoopId) {
+                        classNames += ' melodies__list-item_lived'
                     }
+
                     // console.log(instrument);
                     return (`
                         <div class='melodies__list-item ${classNames}' data-id='${loop.id}' data-instrumentid='${instrument.id}'>
@@ -204,7 +207,10 @@ const stages = {
                 left: root_el.find('.live__button-left'),
                 right: root_el.find('.live__button-right')
             },
-            switch: function (sideName, live) {
+            switch: function (sideName, instruments) {
+
+                const live = +instruments.liveLoopId >0 && +instruments.liveLoopId === +instruments.selectedLoopId;
+
                 if(live){
                     this.els[sideName].addClass('live__button_active');
                 }else{
@@ -224,8 +230,8 @@ const stages = {
 
             progressLine.switch(leftInstrument.live || rightInstrument.live);
 
-            liveButtons.switch('left', leftInstrument.live);
-            liveButtons.switch('right', rightInstrument.live);
+            liveButtons.switch('left', leftInstrument);
+            liveButtons.switch('right', rightInstrument);
 
 
             root_el.find('.melodies__list-item').on('tap', (e) => {
@@ -242,11 +248,11 @@ const stages = {
 
             liveButtons.els['left'].off('click').on('click', () => {
                 const instrumentId = instrumentsId[0];
-                socket.emit('switch_live', instrumentId, !instruments[instrumentId].live);
+                socket.emit('switch_live', instrumentId);
             });
             liveButtons.els['right'].off('click').on('click', () => {
                 const instrumentId = instrumentsId[1];
-                socket.emit('switch_live', instrumentId, !instruments[instrumentId].live);
+                socket.emit('switch_live', instrumentId);
             })
         };
 

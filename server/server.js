@@ -235,12 +235,17 @@ io.on('connection', (socket) => {
 
     });
 
-    socket.on('switch_live', (instrumentId, live) => {
-        // console.log('switch');
-        client_state[instrumentId].live = live;
-        const loopId =  live?client_state[instrumentId].selectedLoopId:0;
+    socket.on('switch_live', (instrumentId) => {
 
-        sendOSC('/live', [+playerId, +loopId ]);
+        if(client_state[instrumentId].liveLoopId != client_state[instrumentId].selectedLoopId) {
+            client_state[instrumentId].liveLoopId = client_state[instrumentId].selectedLoopId;
+        } else {
+            client_state[instrumentId].liveLoopId = 0;
+        }
+
+        const liveLoopId =  client_state[instrumentId].liveLoopId;
+
+        sendOSC('/live', [+playerId, +liveLoopId]);
 
         socket.emit('state', client_state);
     });

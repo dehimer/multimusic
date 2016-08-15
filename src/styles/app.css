@@ -129,6 +129,16 @@
     /*background-color: rgba(0,0,0,0.1);*/
 }
 
+.melodies__list-item_lived {
+    color: inherit;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    border-left: 3px solid white;
+    border-right: 3px solid white;
+    box-sizing: border-box;
+    margin-bottom: -1px;
+}
+
 .melodies__list-item_active {
     color: white;
     border-top: 1px solid #b68540;
