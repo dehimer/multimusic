@@ -100,7 +100,7 @@ const getOSC = (message, cb) => {
             let time = 0;
             let nextStep = function () {
                 num = (num+1)%3;
-                time = parseInt(2000*Math.random());
+                time = 500+parseInt(2000*Math.random());
                 cb([num+1, time]);
                 setTimeout(nextStep, time);
             };

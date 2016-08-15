@@ -206,8 +206,8 @@
     width: 0%;
     height: 100%;
     border-radius: 2px;
-    transition-property: all;
-
+    /*transition-property: all;*/
+    /*transition-duration: 0s*/
 }
 
 .tacts-bar {

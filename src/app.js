@@ -194,16 +194,24 @@ const stages = {
 
                 this.el.html('<div class="progress-bar__line"></div>');
                 // console.log(0);
+                let line_el = this.el.find('.progress-bar__line');
                 // this.el.css({
                 //     transitionDuration: '0s',
                 //     width:'0px'
                 // });
-
-                console.log(time);
-                this.el.css({
-                    transitionDuration: time/1000+'s',
-                    width:'100%'
+                // console.log()
+                line_el.animate({
+                    width: '100%'
+                }, time, function() {
+                    line_el.remove();
+                    // Animation complete.
                 });
+
+                // console.log(time/1000);
+                // line_el.css({
+                //     transitionDuration: time/1000+'s',
+                //     width:'100%'
+                // });
             }
         };
 
