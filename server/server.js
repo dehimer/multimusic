@@ -113,6 +113,10 @@ io.on('connection', (socket) => {
 
     let parsedLoops = void 0;
 
+    /*
+        ВОТ ТУТ НАДО ВОЗВРАЩАТЬ СПИСОК ЛУПОВ ДЛЯ КОНКРЕТНОГО ПОЛЬЗОВАТЕЛЯ
+        пример в файле loops.json (но там с playerid которых в ответе не должно быть)
+     */
     const onLoop = function (instruments) {
         parsedLoops = instruments.reduce((result, loop)=>{
 
