@@ -327,19 +327,21 @@ io.on('connection', (socket) => {
 
     socket.on('switch_live', (instrumentId) => {
 
-        if(client_state.instruments[instrumentId].liveLoopId != client_state.instruments[instrumentId].selectedLoopId) {
-            client_state.instruments[instrumentId].liveLoopId = client_state.instruments[instrumentId].selectedLoopId;
+        const lastLiveLoopId = client_state.instruments[instrumentId].liveLoopId;
+        const newLiveLoopId = client_state.instruments[instrumentId].selectedLoopId;
+
+        if(lastLiveLoopId != newLiveLoopId) {
+            client_state.instruments[instrumentId].liveLoopId = newLiveLoopId;
+            sendOSC('/live', [+playerId, +newLiveLoopId]);
         } else {
             client_state.instruments[instrumentId].liveLoopId = 0;
         }
 
-        const liveLoopId =  client_state.instruments[instrumentId].liveLoopId;
-
-        sendOSC('/live', [+playerId, +liveLoopId]);
+        if(+lastLiveLoopId > 0){
+            sendOSC('/stop', [+playerId, +lastLiveLoopId]);
+        }
 
         socket.emit('state', client_state);
     });
-    // socket.on('disconnect', function () {
-    //     playerId = void 0;
-    // });
+
 });

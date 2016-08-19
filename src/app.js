@@ -292,10 +292,15 @@ $.get('/serverip', (serverip) => {
     let refresh = void 0;
     socket.on('state', (state) => {
         // console.log(state);
+        if(!state.instruments)
+        {
+            return;
+        }
+
         if(typeof refresh !== 'function') {
             refresh = stages.second(socket);
         }
-        refresh(state)
+        refresh(state);
     });
 
 });
