@@ -71,6 +71,9 @@ udpPort.on("bundle", function (oscBundle, timeTag, info) {
     console.log("Remote info is: ", info);
 });
 
+udpPort.on("message", function (mes) {
+    console.log("Mes: ", mes);
+});
 
 udpPort.on("loop", function (oscMsg) {
     console.log("An OSC message just arrived!", oscMsg);
@@ -82,8 +85,10 @@ udpPort.open();
 const { music_server } = config;
 
 const sendOSC = (message, params) => {
+    console.log("Sending");
     console.log(message);
     console.log(params);
+    console.log("---");
     // Send an OSC message to, say, SuperCollider
     udpPort.send({
         address: message,
@@ -196,7 +201,7 @@ io.on('connection', (socket) => {
         console.log('set:playerId: '+newPlayerId);
         playerId = newPlayerId;
 
-        sendOSC('/player', +playerId);
+        sendOSC('/connect', playerId-1);
 
         if(config.emulateMusicServer){
             /*
@@ -254,6 +259,57 @@ io.on('connection', (socket) => {
 
             client_state.instruments = parsedLoops[playerId];
             socket.emit('state', client_state);
+        } else {
+            udpPort.on("message", function cb (mes) {
+            
+
+            if (mes.address == "/loops") {
+                
+                const loops = JSON.parse(fs.readFileSync(__dirname+'/loops.json', 'utf8'));
+                const parsedLoops = loops.reduce((result, loop)=>{
+
+                    const playerId = loop['Playerassignment(3p)'];
+                    const instrumentId = loop['InstrumentID'];
+                    const instrumentName = loop['Instrumentname'];
+                    const loopId = loop['ID'];
+                    const loopName = loop['Codename'];
+
+                    //get users
+                    if(typeof result[playerId] === 'undefined'){
+                        result[playerId] = {}
+                    }
+
+                    //get users instruments
+                    if(typeof result[playerId][instrumentId] === 'undefined'){
+                        result[playerId][instrumentId] = {
+                            id: instrumentId,
+                            name: instrumentName,
+                            loops: [],
+                            selectedLoopId: 0,
+                            live: false
+                        };
+                    }
+
+                    //get loop
+                    result[playerId][instrumentId].loops.push({
+                        id: loopId,
+                        name: loopName
+                    });
+
+                    return result;
+
+                }, {});
+
+                // onLoop(parsedLoops[playerId]);
+                // fs.writeFileSync(__dirname+'/parsedLoops.json', JSON.stringify(parsedLoops));
+                // console.log(parsedLoops);
+
+                client_state.instruments = parsedLoops[playerId];
+                socket.emit('state', client_state);
+
+            }
+            
+        });
         }
 
     });
