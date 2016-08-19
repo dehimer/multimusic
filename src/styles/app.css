@@ -67,7 +67,7 @@
     border-bottom: 1px solid grey;
 
     width: 100vw;
-    height: 20%;
+    height: 13%;
 }
 
 .header__row {
@@ -128,7 +128,7 @@
     font-weight: bold;
     margin: 0px auto;
     width: 100%;
-    border: 1px solid grey;
+    border: 2px solid grey;
     height: 100%;
     overflow:visible;
     /*height:200px;*/
@@ -166,6 +166,9 @@
     border-right: 3px solid #b68540;
     box-sizing: border-box;
     margin-bottom: -1px;
+}
+.melodies__list-name-left {
+    height: 40px;
 }
 
 .melodies__list-item span {
@@ -206,6 +209,7 @@
     height: 100%;
     color:white;
     font-size: 17px;
+    display: none;
 }
 
 .progress-bar__content {
@@ -236,6 +240,7 @@
     height: 100%;
     color:white;
     font-size: 17px;
+    display: none;
 }
 
 .tacts-bar__content {

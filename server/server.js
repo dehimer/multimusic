@@ -79,6 +79,8 @@ udpPort.on("loop", function (oscMsg) {
     console.log("An OSC message just arrived!", oscMsg);
 });
 
+udpPort.setMaxListeners(10000);
+
 // Open the socket.
 udpPort.open();
 
@@ -318,10 +320,7 @@ io.on('connection', (socket) => {
     socket.on('melody_selected', (instrumentId, selectedLoopId) => {
 
         client_state.instruments[instrumentId].selectedLoopId = selectedLoopId;
-
-        sendOSC('/local', [+playerId, +selectedLoopId]);
-
-
+        sendOSC('/local', [playerId-1, +selectedLoopId]);
         socket.emit('state', client_state);
 
     });
