@@ -92,9 +92,11 @@
 }
 
 .content__column {
+    display: inline-block;
+    vertical-align: top;
     margin-left: 3px;
     height: 100%;
-    width: 50%;
+    width: 48%;
     /*display: flex;*/
     flex-direction:column;
     padding-bottom:7px;
@@ -302,5 +304,5 @@
 
 .iScrollVerticalScrollbar {
     overflow: visible !important;
-    right:-10px !important;
+    right:-11px !important;
 }
