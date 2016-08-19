@@ -181,7 +181,7 @@ io.on('connection', (socket) => {
     getOSC('/step', function (step) {
         // io.emit('step', step);
         client_state.step = {num:step[0], time:step[1]};
-        console.log(step);
+        // console.log(step);
         if(client_state.instruments){
             socket.emit('state', client_state);
         }
