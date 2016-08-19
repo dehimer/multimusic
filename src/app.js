@@ -11,18 +11,24 @@ let root_el = $('#root');
 //show first pages
 const stages = {
     first: function(playersid, socket) {
-        console.log(playersid);
+        // console.log(playersid);
         let content = $(`
             <div class='players-id'>
                 <div class='players-id__logo'>
                     <img src='logo.jpg'/>
                 </div>
-                <div class='players-id__message'>Выберите номер игрока</div>
+                <div class='players-id__message-block'>
+                    <div class='players-id__message'>
+                        Выберите номер игрока
+                    </div>
+                </div>
                 <div class='players-id__buttons'>
                 ${
                     playersid.map(playerid => {
                         return (`<div data-id='${playerid}' class='players-id__buttons-button'>
-                            ${playerid}
+                               <div class='players-id__buttons-button-text'>
+                                    ${playerid}
+                               </div>
                         </div>`)
                     }).join('')
                 }
@@ -45,13 +51,13 @@ const stages = {
         let content = $(`
             <div class='header'>
             
-                <div class='header__column'>
+                <div class='header__row'>
                     <div class='logo'>
                         <img src='logo.jpg'/>
                     </div>
                 </div>
-                <div class='header__column'>
-                    <div class='progress-bar'>
+                <div class='header__row'>
+                    <div class='header__column progress-bar'>
                         <div class='progress-bar__content'>
                             <div style='width:100%;'>Положение в такте</div>
                             <div class='progress-bar__line-wrapper'>
@@ -59,9 +65,7 @@ const stages = {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class='header__column'>
-                    <div class='tacts-bar'>
+                    <div class='header__column tacts-bar'>
                         <div class='tacts-bar__content'>
                             <div style='width:100%;'>Тактов сыграно</div>
                             <div class='tacts-bar__line-wrapper'>
@@ -69,37 +73,35 @@ const stages = {
                         </div>
                     </div>
                 </div>
+                
             </div>
+
             <div class='content'>
-                <div class='column'>
-                    <div class='column__content'>
-                        <div class='melodies__list-name melodies__list-name-left'></div>
-                        <div class='melodies__list-wrapper-wrapper'>
-                            <div class='melodies__list-scrollline'></div>
-                            <div class='melodies__list-wrapper'>
-                                <div class='melodies__list melodies__list-left'></div>
-                            </div>
+                <div class='content__row'>
+                    <div class='melodies__list-name melodies__list-name-left'></div>
+                    <div class='melodies__list-wrapper-wrapper'>
+                        <div class='melodies__list-scrollline'></div>
+                        <div class='melodies__list-wrapper'>
+                            <div class='melodies__list melodies__list-left'></div>
                         </div>
-                        <div class='live-button__wrapper'>
-                            <div class='live__button live__button-left'>
-                                <div class='live__button-text'>LIVE</div>
-                            </div>
+                    </div>
+                    <div class='live-button__wrapper'>
+                        <div class='live__button live__button-left'>
+                            <div class='live__button-text'>LIVE</div>
                         </div>
                     </div>
                 </div>
-                <div class='column'>
-                    <div class='column__content'>
-                        <div class='melodies__list-name melodies__list-name-right'></div>
-                        <div class='melodies__list-wrapper-wrapper'>
-                            <div class='melodies__list-scrollline'></div>
-                            <div class='melodies__list-wrapper'>
-                                <div class='melodies__list melodies__list-right'></div>
-                            </div>
+                <div class='content__row'>
+                    <div class='melodies__list-name melodies__list-name-right'></div>
+                    <div class='melodies__list-wrapper-wrapper'>
+                        <div class='melodies__list-scrollline'></div>
+                        <div class='melodies__list-wrapper'>
+                            <div class='melodies__list melodies__list-right'></div>
                         </div>
-                        <div class='live-button__wrapper'>
-                            <div class='live__button live__button-right'>
-                                <div class='live__button-text'>LIVE</div>
-                            </div>
+                    </div>
+                    <div class='live-button__wrapper'>
+                        <div class='live__button live__button-right'>
+                            <div class='live__button-text'>LIVE</div>
                         </div>
                     </div>
                 </div>
@@ -233,7 +235,7 @@ const stages = {
         };
 
         return function(state) {
-            console.log(state);
+            // console.log(state);
 
 
             const instruments = state.instruments;
