@@ -88,14 +88,14 @@
 .content {
     height:80%;
     width:100vw;
-    display: flex;
+    /*display: flex;*/
 }
 
 .content__column {
     margin-left: 3px;
     height: 100%;
     width: 50%;
-    display: flex;
+    /*display: flex;*/
     flex-direction:column;
     padding-bottom:7px;
 }
@@ -120,7 +120,8 @@
     margin-bottom: 10px;
     overflow: hidden;
     width: 100%;
-    height: 100%;
+    height: 70%;
+    margin-bottom: 5px;
     /*max-height: 68%;*/
 }
 
@@ -187,6 +188,7 @@
 
 .live-button__wrapper {
     padding-right:5px;
+    height: 16%;
 }
 .live__button {
     margin: 0px auto;
@@ -214,6 +216,7 @@
     height: 100%;
     color:white;
     font-size: 17px;
+    display: none;
 }
 
 .progress-bar__content {
@@ -244,6 +247,7 @@
     height: 100%;
     color:white;
     font-size: 17px;
+    display: none;
 }
 
 .tacts-bar__content {

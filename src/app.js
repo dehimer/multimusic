@@ -51,12 +51,12 @@ const stages = {
         let content = $(`
             <div class='header'>
             
-                <div class='header__row'>
+                <div class='header__row' style='height:100%;'>
                     <div class='logo'>
                         <img src='logo.jpg'/>
                     </div>
                 </div>
-                <div class='header__row'>
+                <div class='header__row' style='height:0px;'>
                     <div class='header__column progress-bar'>
                         <div class='progress-bar__content'>
                             <div style='width:100%;'>Положение в такте</div>
