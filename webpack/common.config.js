@@ -63,7 +63,7 @@ const common = {
 	    return [
 	    	require('postcss-nested')(),
 	      	autoprefixer({
-	        	browsers: ['last 2 versions'],
+	        	browsers: ['last 4 versions'],
 	      	}),
 	      	postcssImport({
 				addDependencyTo: webpack,
