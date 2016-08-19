@@ -77,8 +77,10 @@ const stages = {
             </div>
 
             <div class='content'>
-                <div class='content__row'>
-                    <div class='melodies__list-name melodies__list-name-left'></div>
+                <div class='content__column'>
+                    <div class='melodies__list-name'>
+                        <div class='melodies__list-name-text melodies__list-name-left'></div>
+                    </div>
                     <div class='melodies__list-wrapper-wrapper'>
                         <div class='melodies__list-scrollline'></div>
                         <div class='melodies__list-wrapper'>
@@ -91,8 +93,10 @@ const stages = {
                         </div>
                     </div>
                 </div>
-                <div class='content__row'>
-                    <div class='melodies__list-name melodies__list-name-right'></div>
+                <div class='content__column'>
+                    <div class='melodies__list-name'>
+                        <div class='melodies__list-name-text melodies__list-name-right'></div>
+                    </div>
                     <div class='melodies__list-wrapper-wrapper'>
                         <div class='melodies__list-scrollline'></div>
                         <div class='melodies__list-wrapper'>
@@ -235,7 +239,7 @@ const stages = {
         };
 
         return function(state) {
-            // console.log(state);
+            console.log(state);
 
 
             const instruments = state.instruments;

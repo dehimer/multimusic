@@ -86,13 +86,12 @@
     height:80%;
     width:100vw;
     display: flex;
-    flex-direction: column;
 }
 
-.content__row{
+.content__column {
     margin-left: 3px;
-    width: 100vw;
-    height:50%;
+    height: 100%;
+    width: 50%;
     display: flex;
     flex-direction:column;
     padding-bottom:7px;
@@ -100,8 +99,14 @@
 
 .melodies__list-name {
     height: 12%;
-    padding-left:9px;
+    /*padding-left:9px;*/
+    display:flex;
+}
+
+.melodies__list-name-text {
     color: white;
+    margin:auto;
+    margin-left:9px;
 }
 
 /* hack of problem of iscroll when overflow-x:visible;overflow-y:hidden; in same time*/
@@ -113,7 +118,7 @@
     overflow: hidden;
     width: 100%;
     height: 100%;
-    max-height: 68%;
+    /*max-height: 68%;*/
 }
 
 .melodies__list-scrollline {
