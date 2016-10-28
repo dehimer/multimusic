@@ -7,7 +7,7 @@ INSTALL
 
 1. cd your/path/to/multimusic
 
-2. npm istall
+2. npm install
 
 
 BUILD
